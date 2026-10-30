@@ -1,0 +1,30 @@
+# Local OS and IDE state
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+local.properties
+.gradle/
+**/build/
+
+# Local credentials and AI session data
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+key.properties
+keystore.properties
+.claude/settings.local.json
+CLAUDE.local.md
+.claude/worktrees/
+.claude/projects/
+.codex-log/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local scratch and captures
+work/
+local/
