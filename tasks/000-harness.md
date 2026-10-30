@@ -1,6 +1,7 @@
 # 000 · UNSEEN 하네스 이관
 
-- 상태: IN_PROGRESS
+- 상태: IN_REVIEW (구현·검증·원격 공유 완료, 팀원 리뷰·main 머지 대기)
+- 관련 PR: [#1 · UNSEEN 앱 개발용 하네스와 팀 협업 기준 구축](https://github.com/Hyundai-MotorApp-Contest/unseen-roads/pull/1)
 - 담당자: Codex (이번 사용자 요청 수행; 팀원 리뷰는 별도)
 - 시작일 / 갱신일: 2026-10-30 KST
 - 목표: 기존 공용 하네스를 실제 UNSEEN 앱 저장소에 적용하고 팀이 함께 사용할 기준을 만든다.
@@ -18,7 +19,8 @@
 ## 실행·검증
 
 검증 상세는 [이번 검증 결과](../docs/validation.md), 원본 출처는 [이관 기록](../docs/harness-migration.md)에 둔다.
-문서 검사·실패 탐지 확인 후 상태와 공유 링크를 갱신한다.
+문서 검사·실패 탐지·원문 보존·공백 검사를 통과했고 `codex/unseen-harness` 브랜치를 원격에 올렸다.
+Draft PR #1로 공유했다. 팀원 리뷰·main 머지·이전 저장소 정리는 아직 실행하지 않았다.
 
 ## 다음 담당자
 
