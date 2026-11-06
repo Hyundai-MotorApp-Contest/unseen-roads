@@ -15,7 +15,11 @@
 
 이 값은 요구사항의 **현재 상태**다. 검사 실행 결과(PASS·FAIL·NOT_RUN·BLOCKED·NOT_APPLICABLE)는 [testing-strategy.md](testing-strategy.md)와 작업 문서에 따로 기록한다. 자동 검사 PASS만으로 COMPLIANT를 쓰지 않는다. Verification 열의 `Mxx`·`Gxx`·`Cxx`는 `scripts/pleos/check-compliance.sh`의 검사 ID다.
 
-## 현재 근거
+## PR 단계별 확인
+
+- 앱 뼈대·오브 홈 단계는 HOME만 표시한다. 아래 스냅샷의 이야기 데모·개인 기록 화면 상태는 후속 단계에 해당한다.
+
+## 전체 UI 스냅샷의 근거
 
 | 근거 | 결과 |
 | --- | --- |

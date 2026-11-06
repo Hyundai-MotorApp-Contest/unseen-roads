@@ -2,7 +2,7 @@
 
 ## 저장소와 제품 기준
 
-- 이 저장소는 `Hyundai-MotorApp-Contest/unseen-roads`의 실제 앱 개발 저장소다. 하네스 문서와 앱 코드를 함께 관리한다. 현재 Android·서버 프로젝트는 아직 없다.
+- 이 저장소는 `Hyundai-MotorApp-Contest/unseen-roads`의 실제 앱 개발 저장소다. 하네스 문서와 앱 코드를 함께 관리한다. 앱의 빌드·실행 기준은 [개발 환경](docs/environment.md)에 있다. 서버 프로젝트는 아직 없다.
 - 제품 요구의 기준은 `intent.md`다. 핵심은 **경로 중첩 → 주차 후 발견 → 이야기 연결**이다. 기획 가설·제안 수치를 검증된 사실로 쓰지 않는다.
 - 새 작업에서는 이 파일, `docs/project-context.md`, 관련 작업 문서만 우선 읽는다. 전체 문서·양식을 매번 읽거나 만들 필요는 없다.
 - 구체적인 구현 요청은 수행한다. 제품 범위·공개 정책·데이터 보관·기술 버전 등 결과를 좌우하는 미정 결정은 필요한 시점에 질문하고, 답변과 무관한 작업은 계속한다. 작은 구현 선택은 기존 관례와 판단으로 처리한다.
@@ -20,7 +20,7 @@
 ## SDK와 구현
 
 - Android Automotive OS / Pleos Connect 대상이다. 일반 Android Auto 투사 앱으로 간주하지 않는다.
-- Kotlin·FastAPI·PostgreSQL/PostGIS는 `intent.md`의 교체 가능한 기술 제안이다. applicationId·UI 방식·SDK/JDK/Gradle 버전은 아직 미정이다. 현재 없는 빌드 명령·서버·자동화를 있다고 쓰지 않는다.
+- 차량 앱은 Kotlin을 사용한다. 임시 applicationId와 빌드 환경은 `docs/environment.md`와 `tasks/004-pleos-kotlin-skeleton.md`에 기록한다. FastAPI·PostgreSQL/PostGIS는 교체 가능한 기술 제안이다. 현재 없는 빌드 명령·서버·자동화를 있다고 쓰지 않는다.
 - SDK 작업은 `docs/pleos/sdk-api-reference.md`와 `docs/pleos.md`의 조사일을 확인하고 사용할 버전의 공식 API·시그니처·권한·지원 상태를 다시 확인한다. 과거 예제나 기억으로 API를 만들어내지 않는다.
 - 문서에 정의됨 / Workspace에서 사용 가능 / 설치 환경에서 지원 / 실제 호출 성공을 구분한다. 위치·주차 신호 접근 가능성을 먼저 확인한다.
 - capability·null·비동기 실패·연결 해제·구독 정리를 처리한다. 기어 값만으로 UX 규제 해제를 판단하지 않는다. Mock·빌드 성공은 실제 차량 API 검증을 대신하지 않는다.

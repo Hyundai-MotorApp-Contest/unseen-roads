@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UNSEEN</string>
+    <string name="prism_title">같은 길, 다른 시간</string>
+    <string name="prism_status">에이전트 대기 중 · 데모</string>
+</resources>
