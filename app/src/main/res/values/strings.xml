@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">UNSEEN</string>
+    <string name="welcome_label">같은 길, 다른 이야기</string>
+    <string name="welcome_title">이 길에서 만나는\n누군가의 이야기</string>
+    <string name="welcome_description">같은 길을 오가는 사람들의 생각과 경험, 기억을 나눠요.</string>
+    <string name="welcome_start">시작하기</string>
+    <string name="demo_label">시뮬레이션 · 예시 데이터</string>
+    <string name="demo_start_story">이야기 남기기</string>
+    <string name="demo_capture_title">이야기 남기는 중</string>
+    <string name="demo_capture_description">음성 인식 단계 시연 중이에요. 완료를 누르면 준비된 예시 문장과 구간을 확인할 수 있어요.</string>
+    <string name="demo_finish">예시 발화 완료</string>
+    <string name="demo_review_title">이야기 초안 확인</string>
+    <string name="demo_review_description">예시 문장 · “퇴근길에 들은 노래 덕분에 하루가 조금 가벼워졌어요.”\n예시 구간 · A → B\n이 초안은 이번 데모에서만 볼 수 있어요.</string>
+    <string name="demo_keep">문장과 구간 확인</string>
+    <string name="demo_done_title">공개 확인을 마쳤어요</string>
+    <string name="demo_done_description">예시 문장과 구간을 확인했어요. 이 데모의 초안은 저장하거나 공개하지 않아요.</string>
+    <string name="back_to_home">홈으로</string>
+    <string name="demo_cancel">취소하고 홈으로</string>
+    <string name="radio_label">AI 라디오 · 예시 이야기</string>
+    <string name="radio_title">같은 길의 목소리</string>
+    <string name="radio_description">“늘 지나던 길인데, 오늘은 노을이 유난히 길게 남았어요. 한동안 그 장면이 생각날 것 같아요.”</string>
+    <string name="radio_pause">일시정지</string>
+    <string name="radio_resume">이어 듣기</string>
+    <string name="radio_open">예시 라디오 듣기</string>
+    <string name="orb_idle">AI DJ · 대기 중</string>
+    <string name="orb_reading">AI DJ · 낭독 시뮬레이션</string>
+    <string name="orb_paused">AI DJ · 일시정지</string>
+    <string name="orb_listening">AI DJ · 듣기 시뮬레이션</string>
+    <string name="orb_route">예시 경로 · A → B</string>
+    <string name="orb_demo">AI DJ · 데모</string>
+    <string name="map_title">길 위의 이야기</string>
+    <string name="map_sample">예시 지도</string>
+    <string name="map_description">내가 기록한 예시 경로 한 개와 공개 이야기가 있는 예시 도로 구간 두 곳</string>
+    <string name="map_legend">네이비 선 · 내가 기록한 길     시안 핀 · 공개 이야기가 있는 구간</string>
     <string name="prism_title">같은 길, 다른 시간</string>
     <string name="prism_status">에이전트 대기 중 · 데모</string>
+    <string name="prism_listen">이야기 듣기</string>
 </resources>

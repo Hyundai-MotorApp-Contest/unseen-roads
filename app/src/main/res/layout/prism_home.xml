@@ -11,5 +11,26 @@
             android:layout_marginTop="12dp" android:importantForAccessibility="no" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prism_title" android:textSize="40sp" android:fontFamily="sans-serif-medium" android:gravity="center" android:textColor="@color/glass_ink" android:accessibilityHeading="true" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/prism_status" android:textSize="22sp" android:textColor="@color/glass_secondary" android:layout_marginTop="6dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="@integer/prism_actions_orientation">
+
+            <Button
+                android:id="@+id/prism_radio"
+                style="@style/PrismAction"
+                android:layout_margin="@dimen/prism_action_margin"
+                android:background="@drawable/welcome_button"
+                android:text="@string/prism_listen"
+                android:textColor="@color/glass_on_primary" />
+
+            <Button
+                android:id="@+id/prism_story"
+                style="@style/PrismAction"
+                android:layout_margin="@dimen/prism_action_margin"
+                android:text="@string/demo_start_story" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
