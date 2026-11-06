@@ -11,7 +11,7 @@
 | P0 | 옵트인·철회·삭제, 세션 기록, 도로 구간 매핑, Route Resonance, Road Threads, 주차 후 Discovery, 신고·숨김·삭제 |
 | P1 | Time Layers, 관련도 정렬, 주차 중 음성 입력, 개인 주행 요약 |
 | 제외 | 실시간 추적·채팅, 주행 중 소셜 콘텐츠, 우회 유도, 감정 추론, AI 자동 게시 |
-| 현재 구현 상태 | 기획과 하네스만 존재. Android·백엔드·DB·APK·빌드 파이프라인은 미구성 |
+| 현재 구현 상태 | Kotlin AAOS 앱과 Gradle Wrapper, Prism Orb 홈 목업. 백엔드·DB·자동 빌드 파이프라인 미구성 |
 | 제안된 기술 | Kotlin / FastAPI / PostgreSQL + PostGIS. 의도 수준의 제안이며 고정 버전·구조 미정 |
 | 팀 환경 | 이전 확인: macOS 2명·Windows 1명, Codex·Claude Code, Android Studio·시뮬레이터 설치 완료 전달 |
 | GitHub 접근 | 2026-10-30 확인: 2019100743·seoddhh·dionypark 모두 Admin. OS와 계정의 대응·개발 역할은 미정 |
