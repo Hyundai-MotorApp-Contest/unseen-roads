@@ -32,5 +32,11 @@
                 android:layout_margin="@dimen/prism_action_margin"
                 android:text="@string/demo_start_story" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/prism_records"
+            style="@style/PrismAction"
+            android:layout_marginTop="16dp"
+            android:text="@string/private_title" />
     </LinearLayout>
 </ScrollView>

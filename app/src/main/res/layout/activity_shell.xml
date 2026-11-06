@@ -11,4 +11,8 @@
     <include
         android:id="@+id/prism_home"
         layout="@layout/prism_home" />
+    <include
+        android:id="@+id/private_records"
+        layout="@layout/private_records"
+        android:visibility="gone" />
 </FrameLayout>

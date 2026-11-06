@@ -15,6 +15,8 @@ class MainActivity : Activity() {
         findViewById<View>(R.id.prism_radio).setOnClickListener { show(Screen.RADIO) }
         findViewById<View>(R.id.prism_story).setOnClickListener { show(Screen.CAPTURE) }
 
+        findViewById<View>(R.id.prism_records).setOnClickListener { show(Screen.RECORDS) }
+        findViewById<View>(R.id.records_back).setOnClickListener { show(Screen.HOME) }
 
         findViewById<Button>(R.id.welcome_action).setOnClickListener {
             show(
@@ -23,7 +25,7 @@ class MainActivity : Activity() {
                     Screen.RADIO -> Screen.RADIO_PAUSED
                     Screen.CAPTURE -> Screen.REVIEW
                     Screen.REVIEW -> Screen.DONE
-                    Screen.HOME, Screen.DONE -> Screen.HOME
+                    Screen.HOME, Screen.RECORDS, Screen.DONE -> Screen.HOME
                 },
             )
         }
@@ -36,8 +38,9 @@ class MainActivity : Activity() {
 
     private fun show(next: Screen) {
         screen = next
-        val showFlow = next != Screen.HOME
+        val showFlow = next != Screen.HOME && next != Screen.RECORDS
         findViewById<View>(R.id.prism_home).visibility = if (next == Screen.HOME) View.VISIBLE else View.GONE
+        findViewById<View>(R.id.private_records).visibility = if (next == Screen.RECORDS) View.VISIBLE else View.GONE
         findViewById<View>(R.id.story_flow).visibility = if (showFlow) View.VISIBLE else View.GONE
         if (!showFlow) return
 
@@ -70,6 +73,7 @@ class MainActivity : Activity() {
         val secondary: Int? = null,
     ) {
         HOME(R.string.app_name, R.string.prism_title, R.string.prism_status, R.string.back_to_home),
+        RECORDS(R.string.app_name, R.string.private_title, R.string.private_status, R.string.back_to_home),
         RADIO(
             R.string.radio_label, R.string.radio_title, R.string.radio_description,
             R.string.radio_pause, R.string.orb_reading,
