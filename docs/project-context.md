@@ -28,4 +28,5 @@
 - 환경·시작: [온보딩](onboarding.md), [환경](environment.md)
 - 구현·리뷰: [결정 기록](decisions.md), [협업](workflow.md), [검증 시나리오](verification-scenarios.md)
 - SDK·제출: [Pleos 조사](pleos.md), [공모전 조사](competition.md). 두 문서는 과거 조사이며 사용 직전 재확인한다.
+- Pleos 공식 가이드 준수: [Pleos 하네스](pleos/README.md). 요구사항 ID·준수 매트릭스·자동 검사.
 - 이관·폐기: [원본 이관 기록](harness-migration.md). 기존 하네스 저장소를 실행 중에 참조하지 않는다.

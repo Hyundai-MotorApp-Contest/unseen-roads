@@ -27,6 +27,10 @@
 | Workspace 권한·SDK 실제 호출 | NOT_RUN | NOT_RUN | NOT_RUN |
 | AI 규칙 로딩 | NOT_RUN | NOT_RUN | NOT_RUN |
 
+## Pleos 가이드 검사
+
+macOS는 `scripts/pleos/check-compliance.sh`, Windows는 `py -3 scripts\pleos\check_compliance.py`를 실행한다. 앱이 없는 문서 브랜치에서는 `--static-only`로 하네스 구조를 확인한다. [Pleos 하네스](pleos/README.md)
+
 ## 앱 프로젝트가 생성되면
 
 1. 실제 프로젝트 경로·JDK·Gradle Wrapper·AGP·SDK 버전·호환 근거를 기록한다.
