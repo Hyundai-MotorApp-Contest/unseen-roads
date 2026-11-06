@@ -36,4 +36,10 @@
     <string name="prism_title">같은 길, 다른 시간</string>
     <string name="prism_status">에이전트 대기 중 · 데모</string>
     <string name="prism_listen">이야기 듣기</string>
+    <string name="private_title">나만의 길 기록</string>
+    <string name="private_status">나만 보는 기록 · 데모</string>
+    <string name="private_car_title">차가 기억한 순간</string>
+    <string name="private_car_empty">아직 저장된 차량 기록이 없어요.</string>
+    <string name="private_voice_title">내가 남긴 이야기</string>
+    <string name="private_voice_empty">아직 저장된 이야기가 없어요.</string>
 </resources>

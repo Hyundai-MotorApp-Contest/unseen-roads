@@ -12,6 +12,7 @@
 | [006 · 파스텔 옐로우 홈과 이야기 데모](006-story-drive-demo.md) | IN_REVIEW | Codex / 팀원 리뷰 미정 | Pleos 화면과 합성 데모 검토 |
 | [007 · Pleos 글래스 UI 목업](007-pleos-glass-flow.md) | IN_REVIEW | Codex / 팀원 리뷰 미정 | 차량 앱에서 전체 화면 흐름 검토 |
 | [008 · Pleos 내비와 이야기 지도](008-story-map-home.md) | IN_REVIEW | Codex / 팀원 리뷰 미정 | 이전 지도 목업 |
+| [009 · Prism Orb 홈과 개인 기록](009-prism-orb-home.md) | IN_REVIEW | Codex / 팀원 리뷰 미정 | Pleos 화면 검토 |
 | [010 · Pleos 공식 가이드 하네스](010-pleos-guide-harness.md) | IN_REVIEW | Claude Code / 팀원 리뷰 미정 | [로드맵](../docs/pleos/implementation-roadmap.md)의 결정 D1~D6 논의 |
 
 다음 단계는 기획서 Phase 1의 A→B→C 핵심 경험, Phase 2의 프라이버시·신고·빈 상태·데모다.
