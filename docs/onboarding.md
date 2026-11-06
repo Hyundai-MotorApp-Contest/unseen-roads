@@ -10,8 +10,8 @@ git clone https://github.com/Hyundai-MotorApp-Contest/unseen-roads.git
 cd unseen-roads
 ```
 
-이미 clone했다면 중복 clone하지 않는다. `git status`로 미커밋 변경을 확인하고 정리한 뒤 팀이 머지한 최신 `main`을 받는다.
-하네스 PR이 머지되기 전 검토할 때는 해당 PR의 브랜치를 선택한다. 새 작업은 [협업 흐름](workflow.md)에 따라 별도 브랜치에서 시작한다.
+이미 clone했다면 중복 clone하지 않는다. `git status`로 미커밋 변경을 확인하고 정리한 뒤 최신 `dev`를 받는다.
+머지 전 PR을 검토할 때는 해당 PR의 브랜치를 선택한다. 새 작업은 최신 `dev`에서 [작업 브랜치](workflow.md#브랜치-규칙)를 만든다. `main`은 검증한 데모·제출 버전 기준이다.
 
 ## 2. 제품과 규칙 확인
 

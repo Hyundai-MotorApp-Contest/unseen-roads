@@ -7,6 +7,7 @@
 | --- | --- | --- | --- |
 | [000 · UNSEEN 하네스 이관](000-harness.md) | IN_REVIEW | Codex (구현 완료) / 팀원 리뷰 미정 | [PR #1](https://github.com/Hyundai-MotorApp-Contest/unseen-roads/pull/1) 검토·머지 후 팀원 전환 |
 | [001 · Pleos 기술 가능성 확인](001-feasibility.md) | TODO | 미정 | 담당자·실제 환경·프로젝트 생성에 필요한 결정 확인 |
+| [010 · Pleos 공식 가이드 하네스](010-pleos-guide-harness.md) | IN_REVIEW | Claude Code / 팀원 리뷰 미정 | [로드맵](../docs/pleos/implementation-roadmap.md)의 결정 D1~D6 논의 |
 
 다음 단계는 기획서 Phase 1의 A→B→C 핵심 경험, Phase 2의 프라이버시·신고·빈 상태·데모다.
 구현 기술과 API 가능성이 확인되면 실제 작업으로 쪼갠다. 아직 존재하지 않는 구현 작업을 완료로 기록하지 않는다.

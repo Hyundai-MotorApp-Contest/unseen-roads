@@ -19,6 +19,12 @@ REQUIRED = (
     "templates/decision.md", ".github/pull_request_template.md",
     ".github/ISSUE_TEMPLATE/task.md", ".gitignore", ".gitattributes", ".editorconfig",
     "scripts/check_harness.py",
+    "docs/pleos/README.md", "docs/pleos/sources.md", "docs/pleos/requirements.md",
+    "docs/pleos/architecture.md", "docs/pleos/design-guidelines.md",
+    "docs/pleos/development-guidelines.md", "docs/pleos/sdk-api-reference.md",
+    "docs/pleos/driving-safety.md", "docs/pleos/compliance-matrix.md",
+    "docs/pleos/testing-strategy.md", "docs/pleos/implementation-roadmap.md",
+    "scripts/pleos/check-compliance.sh", "scripts/pleos/check_compliance.py",
 )
 
 
