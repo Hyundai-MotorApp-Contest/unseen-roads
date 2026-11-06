@@ -73,6 +73,29 @@ Gleo Interface와 LLM SDK를 같은 기능으로 취급하지 않는다.
 자격 증명을 Git이나 공용 채팅에 복사하지 않는다. CRN은 v2.1.0 이후 입력이 필요 없다고 안내한다.
 [프로젝트 생성 및 SDK 사용 신청](https://document.pleos.ai/docs/pleos-only/create-my-project)
 
+### UNSEEN 프로젝트 콘솔의 제공 상태 (2026-11-05 확인)
+
+Pleos Playground 콘솔에서 로그인한 상태로 UNSEEN 프로젝트의 **SDK** 및 **API 권한 관리** 메뉴를 읽기만 했다. 권한 신청·설정 변경은 하지 않았다.
+이 표는 **Workspace의 제공 상태**다. 설치 환경 지원·실제 호출 성공은 별도로 확인해야 한다.
+
+| SDK / API | 콘솔 상태 | 콘솔에 표시된 항목 |
+| --- | --- | --- |
+| Vehicle State | 사용 가능 (11/11) | 제원, 주행 정보(브레이크 페달·드라이브 모드·크루즈·주행 거리), 도어·트렁크·프렁크, EV·연료, 공조, 라이트, 안전 경고등, 좌석, 사이드미러, 통행료 시스템, 창문 |
+| NaviHelper | 사용 가능 (2/2) | 경로 정보 조회(현재 경로·위치 정보·TBT), 경로 탐색 설정 |
+| FusedLocation | 준비 중 | 정밀 위치 정보 조회 |
+| TextToSpeech | 준비 중 | 음성 합성·재생 |
+| SpeechToText | 준비 중 | 음성 인식 |
+| Vehicle Control | 준비 중 (0/8) | 도어, 공조, 주행 정보 설정, EV 충전, 창문, 좌석, 사이드미러, 라이트 제어 |
+| REST · Vehicle Data | 신청 전, 유럽 지역 한정 | 위치, 운행 상태(시동·주차 상태), 속도, 배터리·파워트레인 등 10개 |
+| REST · Fleet | 제휴 계약 필요 | 차량 관제 |
+
+UNSEEN 영향:
+
+- 경로 수집 근거로 가정했던 FusedLocation을 현재 프로젝트에서 사용할 수 없다. NaviHelper 경로 정보의 위치 값과 Android 표준 위치 API를 대안 후보로 확인해야 한다. 둘 다 미검증이다.
+- 콘솔의 Vehicle State 주행 정보 설명에는 기어가 명시되어 있지 않다. 주차 판단에 쓸 신호는 SDK 클래스와 `CarUxRestrictionsManager`로 확인한다.
+- Vehicle Data REST의 주차 상태·위치는 유럽 한정이라 국내 MVP 근거로 쓰지 않는다.
+- P1 주차 중 음성 입력은 STT 제공 전까지 진행할 수 없다.
+
 ## SDK별 개발 시 확인점
 
 ### Vehicle

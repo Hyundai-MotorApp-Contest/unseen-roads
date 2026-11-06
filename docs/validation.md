@@ -10,7 +10,7 @@
 | 실패 탐지 확인 | PASS | 임시 복사본에서 없는 파일·없는 heading·저장소 밖 링크·누락 import가 각각 exit 1. 복원 후 exit 0 |
 | 변경 공백 검사 | PASS | git diff --check 및 git diff --cached --check -- . ':!intent.md' 통과. 사용자 원문 줄바꿈 보존 |
 | GitHub PR 공유 | PASS | codex/unseen-harness 푸시 및 Draft PR #1 생성. main 미머지 |
-| Windows에서 검사 실행 | NOT_RUN | 이번 실행 호스트는 macOS. 팀원 확인 필요 |
+| Windows에서 검사 실행 | PASS | 2026-11-05 Windows 11 / Python 3.12.10, py -3 scripts/check_harness.py. 처음에는 core.autocrlf=true로 LF 규칙 밖 파일이 CRLF가 되어 FAIL. .gitattributes 기본값을 eol=lf로 바꾼 뒤 재체크아웃하여 PASS |
 | 각 팀원 Codex·Claude 규칙 로딩 | NOT_RUN | 팀원 세션을 실행하지 않음 |
 | Android build·SDK·Emulator·서버 | NOT_RUN | 앱·서버 프로젝트 미생성 |
 | UNSEEN 제품 검증 시나리오 | NOT_RUN | 계획만 작성, 실제 앱 없음 |
