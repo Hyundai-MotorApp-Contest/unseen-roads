@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="320dp" android:height="320dp"
+    android:viewportWidth="320" android:viewportHeight="320">
+    <path android:pathData="M160,0a160,160 0,1 1,0 320a160,160 0,1 1,0 -320">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="160" android:centerY="166" android:gradientRadius="155"
+                android:startColor="#AA5ABCE2" android:centerColor="#5578DCDD" android:endColor="#008CE2EB" />
+        </aapt:attr>
+    </path>
+    <path android:strokeWidth="2" android:strokeColor="#AAFFFFFF"
+        android:pathData="M160,39a121,121 0,1 1,0 242a121,121 0,1 1,0 -242">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="116" android:centerY="99" android:gradientRadius="200"
+                android:startColor="#F5FFFA" android:centerColor="#8CE7D9" android:endColor="#4384B8" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M54,188C57,125 98,104 158,117C213,130 252,120 265,93C300,151 273,240 212,266C145,293 76,261 54,188Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="88" android:startY="105" android:endX="232" android:endY="252"
+                android:startColor="#00B2FAEF" android:centerColor="#BE5DC8E9" android:endColor="#555282CA" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M58,205C89,226 117,239 169,213C216,190 247,152 279,152C282,224 227,280 160,280C116,280 77,255 58,205Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="83" android:startY="253" android:endX="243" android:endY="160"
+                android:startColor="#77FFFFFF" android:centerColor="#92B4F4E2" android:endColor="#0086CCE7" />
+        </aapt:attr>
+    </path>
+    <path android:strokeColor="#AAFFFFFF" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M73,116C89,79 119,60 155,58" />
+</vector>

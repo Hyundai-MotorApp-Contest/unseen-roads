@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="prism_actions_orientation">0</integer>
+    <dimen name="prism_action_margin">12dp</dimen>
+</resources>

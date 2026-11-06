@@ -2,7 +2,7 @@
 
 ## 저장소와 제품 기준
 
-- 이 저장소는 `Hyundai-MotorApp-Contest/unseen-roads`의 실제 앱 개발 저장소다. 하네스 문서와 앱 코드를 함께 관리한다. 현재 Android·서버 프로젝트는 아직 없다.
+- 이 저장소는 `Hyundai-MotorApp-Contest/unseen-roads`의 실제 앱 개발 저장소다. 하네스 문서와 앱 코드를 함께 관리한다. 앱의 빌드·실행 기준은 [개발 환경](docs/environment.md)에 있다. 서버 프로젝트는 아직 없다.
 - 제품 요구의 기준은 `intent.md`다. 핵심은 **경로 중첩 → 주차 후 발견 → 이야기 연결**이다. 기획 가설·제안 수치를 검증된 사실로 쓰지 않는다.
 - 새 작업에서는 이 파일, `docs/project-context.md`, 관련 작업 문서만 우선 읽는다. 전체 문서·양식을 매번 읽거나 만들 필요는 없다.
 - 구체적인 구현 요청은 수행한다. 제품 범위·공개 정책·데이터 보관·기술 버전 등 결과를 좌우하는 미정 결정은 필요한 시점에 질문하고, 답변과 무관한 작업은 계속한다. 작은 구현 선택은 기존 관례와 판단으로 처리한다.
@@ -20,15 +20,27 @@
 ## SDK와 구현
 
 - Android Automotive OS / Pleos Connect 대상이다. 일반 Android Auto 투사 앱으로 간주하지 않는다.
-- Kotlin·FastAPI·PostgreSQL/PostGIS는 `intent.md`의 교체 가능한 기술 제안이다. applicationId·UI 방식·SDK/JDK/Gradle 버전은 아직 미정이다. 현재 없는 빌드 명령·서버·자동화를 있다고 쓰지 않는다.
-- SDK 작업은 `docs/pleos.md`의 조사일을 확인하고 사용할 버전의 공식 API·시그니처·권한·지원 상태를 다시 확인한다. 과거 예제나 기억으로 API를 만들어내지 않는다.
+- 차량 앱은 Kotlin을 사용한다. 임시 applicationId와 빌드 환경은 `docs/environment.md`와 `tasks/004-pleos-kotlin-skeleton.md`에 기록한다. FastAPI·PostgreSQL/PostGIS는 교체 가능한 기술 제안이다. 현재 없는 빌드 명령·서버·자동화를 있다고 쓰지 않는다.
+- SDK 작업은 `docs/pleos/sdk-api-reference.md`와 `docs/pleos.md`의 조사일을 확인하고 사용할 버전의 공식 API·시그니처·권한·지원 상태를 다시 확인한다. 과거 예제나 기억으로 API를 만들어내지 않는다.
 - 문서에 정의됨 / Workspace에서 사용 가능 / 설치 환경에서 지원 / 실제 호출 성공을 구분한다. 위치·주차 신호 접근 가능성을 먼저 확인한다.
 - capability·null·비동기 실패·연결 해제·구독 정리를 처리한다. 기어 값만으로 UX 규제 해제를 판단하지 않는다. Mock·빌드 성공은 실제 차량 API 검증을 대신하지 않는다.
 - 도메인 로직과 차량 신호·저장·네트워크 경계를 구분하되, 미정 아키텍처나 의존성을 선제 도입하지 않는다.
 
+## Pleos 공식 가이드 준수
+
+- Pleos 앱 기획·설계 가이드와 앱 개발·연동 가이드를 준수한다. 요구사항 ID·출처·검증 방식은 `docs/pleos/requirements.md`, 현재 구현 상태는 `docs/pleos/compliance-matrix.md`, 사용 절차는 `docs/pleos/README.md`다. 작업과 관련된 분류의 요구사항만 확인하고 매번 전체를 읽지 않는다.
+- 구현 전: 관련 요구사항 ID를 작업 문서에 적는다. 쓸 API·퍼미션·지원 확인 방법을 `docs/pleos/sdk-api-reference.md`와 공식 원문에서 확인하고, 주행 규제 영향을 `docs/pleos/driving-safety.md`로 판단하며, 바뀔 파일과 매트릭스 행을 정한다.
+- 구현 중: CarUxRestrictions를 주행 규제의 기준으로 삼고 진행 중 재생·녹음·공개 확인·화면에도 반영한다. DO 선언이나 카테고리 예시를 허용 근거로 쓰지 않는다. 차량 하드웨어에 직접 접근하지 않고 Pleos SDK·AAOS 표준 API만 쓰며 SDK 호출은 어댑터 경계(`docs/pleos/architecture.md`) 뒤에 둔다. 재생 전 오디오 포커스를 요청하고 포커스 변경·Suspend를 처리한다. capability·`isSupported()`·권한 거부·연결 실패·null·주행 제한을 각각 처리한다.
+- 구현 후: macOS `scripts/pleos/check-compliance.sh`, Windows `py -3 scripts\pleos\check_compliance.py`를 실행하고, 관련 Emulator·리뷰 검증을 수행하거나 NOT_RUN·BLOCKED로 남긴다. compliance-matrix를 같은 변경에서 갱신하고 위반·미검증 항목을 작업 문서·PR에 적는다.
+- SAFETY·AUDIO 분류의 MUST·MUST_NOT 위반은 BLOCKER다. 해결 전 머지·데모하지 않는다.
+- 금지: 공식 문서에 없는 API·퍼미션·정책을 필수 규정이나 구현으로 만들기, 미승인 Pleos 퍼미션 선언, 차량 모델명 분기, 최상단 Back에서 앱 종료, 주행 중 애니메이션·자동 스크롤로 시선 유도, App Market 제출 빌드에 데모 데이터 포함. 확인하지 못한 문서 내용은 추측으로 채우지 않고 `docs/pleos/sources.md`에 UNVERIFIED로 남긴다.
+- 요구사항 준수 상태(COMPLIANT·NON_COMPLIANT·PARTIAL·NOT_IMPLEMENTED·NOT_APPLICABLE·UNVERIFIED)와 검사 결과(PASS·FAIL·NOT_RUN·BLOCKED·NOT_APPLICABLE)를 섞지 않는다. 구현하지 않은 기능은 위반이 아니라 NOT_IMPLEMENTED로 쓴다.
+
 ## 협업과 검증
 
 - `docs/workflow.md`의 작업 → 작은 변경 → 검증 → PR → 다른 팀원 리뷰 흐름을 따른다. 큰 작업은 `templates/task.md`로 `tasks/`에 범위·담당·완료 조건을 기록한다.
+- 새 작업은 최신 `dev`에서 `feat/private-records` 같은 작업 브랜치로 시작한다. 브랜치명에 AI 도구 이름을 붙이지 않는다. 작업 PR은 `dev`로, 검증한 데모·제출 버전 PR은 `dev`에서 `main`으로 연다. 세부 기준은 [브랜치 규칙](docs/workflow.md#브랜치-규칙)을 따른다.
+- 새 커밋은 [커밋 규칙](docs/workflow.md#커밋-규칙)을 따른다. 제목은 `type(scope): 변경 요약`으로 쓰고, 커밋 전에 스테이징한 변경을 확인한다.
 - 시작 전 branch·기존 변경·겹치는 작업을 확인한다. 다른 사람의 변경을 보존하고 공유 브랜치 강제 푸시·임의 초기화를 하지 않는다.
 - 팀·AI 사이 결정과 인수인계는 파일·이슈·PR에 남긴다. 개인 채팅이 모든 팀원에게 공유된다고 가정하지 않는다.
 - 문서 하네스 검사는 macOS `python3 scripts/check_harness.py`, Windows `py -3 scripts/check_harness.py`다. 앱 프로젝트가 생기면 실제 Wrapper와 실행 명령을 `docs/environment.md`에 기록한다.
@@ -42,3 +54,4 @@
 - 동의 전 수집, 철회 후 수집 지속, 삭제 누락, 응답·로그를 통한 타인 경로/시각 재식별 가능성을 확인한다.
 - 도로 구간 매칭 없는 발견, 미지원 API를 성공으로 처리한 경로, 구독 누수, 신고·숨김·삭제 누락을 확인한다.
 - SDK 버전·권한 근거와 실제 검증 수준을 대조한다. AI 리뷰를 다른 팀원 승인으로 기록하지 않는다.
+- 변경에 걸린 Pleos 요구사항 ID, compliance-matrix 갱신 여부, `check-compliance` 결과와 NOT_RUN 항목을 확인한다.

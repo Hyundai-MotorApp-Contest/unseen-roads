@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="680dp"
+    android:height="320dp"
+    android:viewportWidth="680"
+    android:viewportHeight="320">
+    <path android:fillColor="#E9F1F5" android:pathData="M0,0H680V320H0Z" />
+    <path android:fillColor="#D4EBE3" android:pathData="M0,0H155L120,89L48,111L0,95ZM484,26L680,0V72L587,113L511,97ZM508,255L633,228L680,265V320H489Z" />
+    <path android:fillColor="#B6E0EB" android:pathData="M0,239C111,202 174,261 259,253C354,242 407,139 485,124C558,109 608,164 680,132V158C611,197 556,138 492,151C416,167 366,268 259,281C167,291 111,229 0,267Z" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="11" android:pathData="M0,151L110,126L211,151L355,94L511,97L680,63M0,194L130,170L226,191L361,143L419,168L541,192L680,176M165,0L123,113L141,203L112,320M280,0L250,105L254,191L226,320M406,0L368,90L362,143L398,261L378,320M537,0L501,100L523,174L505,320M626,0L605,93L633,189L598,320M0,297L100,278L208,304L380,277L506,236L680,221" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="15" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M84,178L130,170L226,191L361,143L419,168L481,180" />
+    <path android:strokeColor="#002C5F" android:strokeWidth="7" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M84,178L130,170L226,191L361,143L419,168L481,180" />
+    <path android:strokeColor="@color/hyundai_cyan" android:strokeWidth="8" android:strokeLineCap="round" android:pathData="M272,175L322,157M526,195L566,190" />
+    <path android:fillColor="#007FA8" android:strokeColor="#FFFFFF" android:strokeWidth="3" android:pathData="M299,138C285,138 278,149 278,159C278,171 299,182 299,182C299,182 320,171 320,159C320,149 313,138 299,138ZM548,160C534,160 527,171 527,181C527,193 548,204 548,204C548,204 569,193 569,181C569,171 562,160 548,160Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M299,153a6,6 0,1 0,0 12a6,6 0,1 0,0 -12M548,175a6,6 0,1 0,0 12a6,6 0,1 0,0 -12" />
+</vector>
