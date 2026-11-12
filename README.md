@@ -40,8 +40,8 @@ flowchart LR
   subgraph SRV["자체 서버 (소스 미포함)"]
     direction TB
     API["API"]
-    LLM["정리 AI<br/>말 → 사연"]
-    JDG["판단 모델 Judge<br/>되묻기 · 승인 판단"]
+    JDG["Judge 오케스트레이터<br/>상황 판단 · 도구 선택"]
+    LLM["Tools<br/>정리 · 개인정보 · 되묻기 · 게시"]
     DB[("이야기 저장소")]
   end
 
@@ -56,9 +56,9 @@ flowchart LR
   ORCH --> TTS
   LOC --> ORCH
   ORCH -- "텍스트만 (HTTPS)" --> API
-  API --> LLM
   API --> JDG
-  API <--> DB
+  JDG --> LLM
+  LLM <--> DB
 ```
 
 | 구성 | 하는 일 |
@@ -69,7 +69,56 @@ flowchart LR
 | Pleos SDK | 음성 인식·낭독·위치·차량 정보를 제공합니다 |
 | 자체 서버 | STT 텍스트를 받아 사연으로 정리하고, 판단 모델이 결과를 구조화된 값(JSON)으로 돌려줍니다. API 키는 서버에만 둡니다 |
 
-## 음성 사연 흐름
+## 음성 에이전트 구조
+
+음성이 들어오면 **Judge(오케스트레이터)** 가 상황을 판단하고, 아래 도구(Tool) 중 하나를 골라 호출합니다. 도구 결과는 다시 Judge로 돌아가고, Judge가 다음 행동을 정합니다.
+
+```mermaid
+flowchart TB
+  DRIVER(("🧑 운전자"))
+  STT["🎙️ Pleos STT<br/>음성 → 텍스트"]
+  TTS["🔊 Pleos TTS<br/>텍스트 → 음성"]
+
+  subgraph AGENT["음성 에이전트"]
+    direction TB
+    JEV{"⚖️ Judge<br/>오케스트레이터<br/>상황 판단 · 도구 선택"}
+
+    subgraph TOOLS["Tools"]
+      direction LR
+      T1["draft_story<br/>말 → 사연 정리"]
+      T2["check_privacy<br/>실명·주소·차량번호 제거"]
+      T3["ask_clarify<br/>되묻기 질문 생성"]
+      T4["confirm_story<br/>'이렇게 올릴까요?'"]
+      T5["publish_story<br/>사연 게시"]
+      T6["save_private<br/>비공개 보관"]
+      T7["get_road_segment<br/>지금 지나는 구간"]
+    end
+
+    GUARD["🛡️ 안전 장치 (코드로 강제)<br/>· 명시적 '응'일 때만 publish_story 허용<br/>· 되묻기 횟수 상한 → 초과 시 save_private<br/>· 주행 규제 상태 미상 → 세션 중단"]
+  end
+
+  DRIVER -- "말하기" --> STT
+  STT -- "텍스트" --> JEV
+  JEV --> T1 & T2 & T3 & T4 & T5 & T6 & T7
+  T1 & T2 & T7 -.->|결과| JEV
+  T3 & T4 --> TTS
+  TTS -- "질문 · 확인" --> DRIVER
+  GUARD -.- JEV
+  T5 --> SERVER[("이야기 서버")]
+  T6 --> LOCAL[("내 기록")]
+```
+
+| 도구 | 언제 부르나 | 결과 |
+| --- | --- | --- |
+| `draft_story` | STT 원문이 들어왔을 때 | 듣기 좋은 사연 초안 (원문에 없는 내용 추가 금지) |
+| `check_privacy` | 초안이 만들어진 뒤 | 개인정보를 지운 초안, 지운 항목 목록 |
+| `ask_clarify` | 말이 끊겼거나 의미가 불분명할 때 | TTS로 읽을 짧은 질문 |
+| `confirm_story` | 초안이 이해되고 안전할 때 | "이렇게 올릴까요?" 낭독 후 답변 듣기 |
+| `publish_story` | 운전자가 **명시적으로 승인**했을 때만 | 서버에 게시 |
+| `save_private` | 무응답·애매한 답·실패·상한 초과 | 공개하지 않고 내 기록에 보관 |
+| `get_road_segment` | 사연을 길에 연결할 때 | 현재 도로 구간 (FusedLocation) |
+
+### 대화 단계
 
 ```mermaid
 stateDiagram-v2
