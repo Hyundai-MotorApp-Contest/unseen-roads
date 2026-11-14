@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-feature android:name="android.hardware.type.automotive" android:required="true" />
 
+    <!-- 1차 기획 목업: 마이크·위치·차량 권한을 요청하지 않는다. 음성은 예시 대사로 흉내 낸다. -->
     <application
+        android:allowBackup="false"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Material.NoActionBar">
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:exported="true">

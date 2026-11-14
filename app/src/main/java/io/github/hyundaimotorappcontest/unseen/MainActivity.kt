@@ -1,98 +1,70 @@
 package io.github.hyundaimotorappcontest.unseen
 
-import android.app.Activity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameMillis
 
-class MainActivity : Activity() {
-    private var screen = Screen.HOME
-
+/**
+ * ourroad 차량 앱 (Pleos Connect) 1차 기획 목업.
+ *
+ * 음성 인식·낭독·서버 판단은 SDK가 열리기 전이라 [DadeuriFlow]가 시간 흐름으로 흉내 낸다.
+ * 시간은 화면 프레임에 맞춰 흐르므로 앱이 보이지 않으면 대화도 멈춘다.
+ */
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shell)
-        findViewById<View>(R.id.prism_radio).setOnClickListener { show(Screen.RADIO) }
-        findViewById<View>(R.id.prism_story).setOnClickListener { show(Screen.CAPTURE) }
+        setContent {
+            var state by rememberSaveable(stateSaver = FlowStateSaver) { mutableStateOf(FlowState()) }
+            val dispatch: (Event) -> Unit = { state = DadeuriFlow.reduce(state, it) }
 
-        findViewById<View>(R.id.prism_records).setOnClickListener { show(Screen.RECORDS) }
-        findViewById<View>(R.id.records_back).setOnClickListener { show(Screen.HOME) }
+            LaunchedEffect(Unit) {
+                var last = withFrameMillis { it }
+                var pending = 0L
+                while (true) {
+                    val now = withFrameMillis { it }
+                    // Cap the gap so returning to the app does not skip a whole line of speech.
+                    pending += (now - last).coerceAtMost(MAX_FRAME_GAP_MS)
+                    last = now
+                    if (pending >= TICK_MS) {
+                        dispatch(Event.Tick(pending))
+                        pending = 0
+                    }
+                }
+            }
 
-        findViewById<Button>(R.id.welcome_action).setOnClickListener {
-            show(
-                when (screen) {
-                    Screen.RADIO_PAUSED -> Screen.RADIO
-                    Screen.RADIO -> Screen.RADIO_PAUSED
-                    Screen.CAPTURE -> Screen.REVIEW
-                    Screen.REVIEW -> Screen.DONE
-                    Screen.HOME, Screen.RECORDS, Screen.DONE -> Screen.HOME
-                },
-            )
-        }
-        findViewById<Button>(R.id.secondary_action).setOnClickListener { show(Screen.HOME) }
-        findViewById<Button>(R.id.tertiary_action).setOnClickListener {
-            show(Screen.HOME)
-        }
-        show(screen)
-    }
+            // Back stops the current conversation. At the top level it is consumed and never exits the car app.
+            BackHandler { dispatch(Event.Stop) }
 
-    private fun show(next: Screen) {
-        screen = next
-        val showFlow = next != Screen.HOME && next != Screen.RECORDS
-        findViewById<View>(R.id.prism_home).visibility = if (next == Screen.HOME) View.VISIBLE else View.GONE
-        findViewById<View>(R.id.private_records).visibility = if (next == Screen.RECORDS) View.VISIBLE else View.GONE
-        findViewById<View>(R.id.story_flow).visibility = if (showFlow) View.VISIBLE else View.GONE
-        if (!showFlow) return
-
-        findViewById<TextView>(R.id.screen_label).setText(screen.label)
-        findViewById<TextView>(R.id.welcome_title).setText(screen.title)
-        findViewById<TextView>(R.id.welcome_description).setText(screen.description)
-        findViewById<Button>(R.id.welcome_action).setText(screen.action)
-        findViewById<Button>(R.id.secondary_action).apply {
-            val secondary = screen.secondary
-            visibility = if (secondary == null) View.GONE else View.VISIBLE
-            secondary?.let { setText(it) }
-        }
-        findViewById<Button>(R.id.tertiary_action).visibility =
-            if (screen == Screen.RADIO || screen == Screen.RADIO_PAUSED) View.VISIBLE else View.GONE
-        findViewById<TextView>(R.id.orb_status).setText(screen.status)
-        findViewById<PrismOrbView>(R.id.flow_orb).state = when (next) {
-            Screen.RADIO -> PrismOrbView.State.SPEAKING
-            Screen.CAPTURE -> PrismOrbView.State.LISTENING
-            Screen.REVIEW -> PrismOrbView.State.THINKING
-            else -> PrismOrbView.State.IDLE
+            CarScreen(state, dispatch)
         }
     }
 
-    private enum class Screen(
-        val label: Int,
-        val title: Int,
-        val description: Int,
-        val action: Int,
-        val status: Int = R.string.orb_demo,
-        val secondary: Int? = null,
-    ) {
-        HOME(R.string.app_name, R.string.prism_title, R.string.prism_status, R.string.back_to_home),
-        RECORDS(R.string.app_name, R.string.private_title, R.string.private_status, R.string.back_to_home),
-        RADIO(
-            R.string.radio_label, R.string.radio_title, R.string.radio_description,
-            R.string.radio_pause, R.string.orb_reading,
-        ),
-        RADIO_PAUSED(
-            R.string.radio_label, R.string.radio_title, R.string.radio_description,
-            R.string.radio_resume, R.string.orb_paused,
-        ),
-        CAPTURE(
-            R.string.demo_label, R.string.demo_capture_title, R.string.demo_capture_description,
-            R.string.demo_finish, R.string.orb_listening, R.string.demo_cancel,
-        ),
-        REVIEW(
-            R.string.demo_label, R.string.demo_review_title, R.string.demo_review_description,
-            R.string.demo_keep, R.string.orb_route, R.string.demo_cancel,
-        ),
-        DONE(
-            R.string.demo_label, R.string.demo_done_title, R.string.demo_done_description,
-            R.string.back_to_home,
-        ),
+    private companion object {
+        const val TICK_MS = 100L
+        const val MAX_FRAME_GAP_MS = 250L
     }
 }
+
+/**
+ * Restores the connection and demo settings after the Activity is recreated (PLEOS-UX-007, LIFECYCLE-002).
+ * A conversation in progress is not resumed automatically: the driver starts it again.
+ */
+private val FlowStateSaver = Saver<FlowState, List<Any>>(
+    save = { s ->
+        listOf(s.scene != Scene.UNPAIRED, s.settings.driving, s.settings.emptyRoad, s.settings.judge.ordinal)
+    },
+    restore = { v ->
+        FlowState(
+            scene = if (v[0] as Boolean) Scene.IDLE else Scene.UNPAIRED,
+            settings = DemoSettings(driving = v[1] as Boolean, emptyRoad = v[2] as Boolean, judge = Judge.entries[v[3] as Int]),
+        )
+    },
+)

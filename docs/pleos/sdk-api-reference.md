@@ -168,3 +168,11 @@ AAOS API의 정확한 시그니처·권한(예: CarPropertyManager 접근 권한
 - 내비 탑재 여부 조회(X-05)
 - Speech Service의 오디오 컨텍스트(X-08)
 - LLM SDK: Emulator 2.1.0에서 제공 종료(docs/pleos.md 2026-10-29 조사)
+
+## 2026-11-09 · ourroad 음성 프로토타입 재확인
+
+> 이 절의 프로토타입 코드는 2026-11-15 1차 기획 목업으로 대체하며 제거했다. 조사·확인 기록으로만 남긴다.
+
+Gleo 개념·스키마·Callback·전달 승인, Pleos STT·TTS 3.3.1 소개와 공개 SDK 신청 안내를 재열람했다. 공개 신청 안내는 Speech SDK 준비 중이며 현재 프로젝트 콘솔의 새 승인을 확인한 것은 아니다. Android Car·GEAR_SELECTION·UX·SpeechRecognizer·TextToSpeech·Voice 원문도 확인했다.
+
+이번 구현은 미승인 Pleos 권한을 선언하지 않고 공개 AAOS·Android 기기 내 API를 사용한다. GEAR_SELECTION 읽기는 normal 권한 CAR_POWERTRAIN, 음성 인식은 RECORD_AUDIO 런타임 권한이다. CarDrivingStateManager는 시스템 전용이므로 사용하지 않는다. android.car 컴파일 참조와 optional 런타임 라이브러리 선언을 구분한다. 현재 Pleos 이미지에서 실제 차량 콜백은 성공했지만 Android STT·TTS 엔진 지원은 충족하지 못했다. [정확한 API·권한·설계·공식 링크](../ourroad-voice.md), [실행 결과](../../tasks/011-ourroad-voice.md)를 참고한다. 위 기존 SDK별 설치/호출 표는 과거 조사이며 이번 Android API 결과를 Pleos SDK 성공으로 옮겨 쓰지 않는다.

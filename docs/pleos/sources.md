@@ -164,3 +164,17 @@ P-03의 URL 철자(`restiction`)는 원문 그대로다.
 ## 이전 조사와의 관계
 
 [docs/pleos.md](../pleos.md)는 2026-10-29·2026-11-01 조사 스냅샷이며 콘솔의 SDK 표시 상태(사용 가능/준비 중)를 담고 있다. 이 디렉터리는 2026-11-06 기준 공식 가이드의 요구사항 하네스다. 두 문서가 다르면 원문을 다시 열어 확인하고 이 파일의 확인일을 갱신한다.
+
+## 2026-11-09 · 음성 작업 추가 확인
+
+> 이 절의 프로토타입 코드는 2026-11-15 1차 기획 목업으로 대체하며 제거했다. 조사·확인 기록으로만 남긴다.
+
+웹 도구로 G-01~05의 Gleo 개념·앱 스키마·Callback·Intent 예제·승인 전달, S-T·S-S의 3.3.1 소개, SDK 사용 신청 안내를 다시 읽었다. Android Car·VehiclePropertyIds·CarPropertyManager·CarUxRestrictionsManager·SpeechRecognizer·TextToSpeech·Voice도 읽었다. [정확한 원문 링크와 해석](../ourroad-voice.md), [실행 결과](../../tasks/011-ourroad-voice.md). 2026-11-06의 Chrome 수집과 이번 웹 수집은 별개다.
+
+| ID | 항목 | 상태 | 확인 경로 |
+| --- | --- | --- | --- |
+| X-16 | Gleo 수신 인증·정확한 응답 대상 패키지/권한·제한 중 silent 보장 | UNVERIFIED | G-04·G-05 공개 예제만으로 보안 보장 불가. 담당자/실환경 확인 전 export하지 않음 |
+| X-17 | Pleos 이미지의 android.car 공유 라이브러리 선언 | UNVERIFIED | 공식 배포 계약은 못 찾음. 2.1.0 로컬 이미지에서 필수 선언 설치 실패·optional 선언 후 공개 Car API 실제 콜백 성공. 임의 vendor 내부 API 사용 안 함 |
+| X-18 | 기기 내 STT·TTS 한국어 지원 | UNVERIFIED | 표준 API 지원은 이미지별 확인. 이번 이미지 on-device STT=false, Android TTS init=-1. Pleos Speech SDK 실패로 일반화하지 않음 |
+
+X-10 중 이번에 사용한 Car/속성/UX API는 READ로 보완했고 나머지 링크는 기존 상태다. X-07(Suspend)·X-08(Pleos Speech 오디오 포커스)·X-09(Pleos STT RECORD_AUDIO 필요 여부)는 여전히 UNVERIFIED다.
