@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "UNSEEN"
+rootProject.name = "ourroad"
 include(":app")

@@ -1,4 +1,4 @@
-# UNSEEN · 같은 길, 다른 시간
+# ourroad · 같은 길, 다른 시간
 
 서로 다른 시간에 같은 도로를 지나간 운전자들이, 말로 남긴 이야기로 이어지는 Pleos Connect 차량 앱.
 
@@ -129,7 +129,7 @@ LLM(정리·판단)은 Pleos LLM SDK가 제공되지 않아 자체 서버에서 
 adb install apk/UNSEEN_[앱이름]_release.apk
 ```
 
-3. 앱 목록에서 **UNSEEN**을 실행합니다.
+3. 앱 목록에서 **ourroad**를 실행합니다.
 
 ### 소스에서 빌드
 
@@ -194,7 +194,7 @@ adb shell cmd hmg_car_service --service drivingstate driving_regulation off
 | [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) | AI 공통 규칙과 Claude Code 진입점 |
 | [개발 환경](docs/environment.md) / [협업 흐름](docs/workflow.md) | OS별 시작과 작업 공유 |
 | [Pleos 조사](docs/pleos.md) / [공모전 조사](docs/competition.md) | 조사 스냅샷; 사용 전 공식 원문 재확인 |
-| [UNSEEN 검증 시나리오](docs/verification-scenarios.md) | 동의·차량 상태·공유 구간·프라이버시·콘텐츠 검증 |
+| [ourroad 검증 시나리오](docs/verification-scenarios.md) | 동의·차량 상태·공유 구간·프라이버시·콘텐츠 검증 |
 | [작업 목록](tasks/README.md) / [양식](templates/README.md) / [프롬프트](PROMPTS.md) | 작업·API 계약·검증·인수인계 |
 | [이관 기록](docs/harness-migration.md) / [검증 결과](docs/validation.md) | 원본 출처·폐기 기준·확인 수준 |
 
@@ -203,3 +203,9 @@ adb shell cmd hmg_car_service --service drivingstate driving_regulation off
 ```sh
 python3 scripts/check_harness.py
 ```
+
+## ourroad · 다드리
+
+앱 이름은 `ourroad`, 음성 에이전트는 `다드리`다. 차에서는 대화와 듣기만 하고, 보기·관리는 휴대폰 앱이 맡는다.
+
+1차 기획 제출에서는 Pleos SDK 사용이 열리지 않으므로 차량 앱은 예시 대사와 시연 제어로 움직이는 목업이다. 앱을 실행한 뒤 오른쪽 "시연 제어"에서 **시나리오 1 · 혼자 퇴근, 정체 구간**을 누르면 다드리가 먼저 말을 걸고 사연 듣기 → 공감 → 사연 남기기 → 확인 후 게시까지 이어진다. 화면의 사연·발화는 모두 예시다. [음성 기획과 향후 SDK 사용 방안](docs/ourroad-voice.md), [작업 011](tasks/011-ourroad-voice.md).
