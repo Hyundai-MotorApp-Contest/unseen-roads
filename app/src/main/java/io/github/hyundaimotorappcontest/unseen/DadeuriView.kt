@@ -24,13 +24,13 @@ import kotlin.math.sin
 import kotlin.random.Random
 
 /**
- * A glass prism orb that eases between voice-assistant states.
+ * 다드리: the voice agent's glass prism visual that eases between voice states.
  *
  * AGSL port of prism-orb 1.0.0 with its Sky palette, simplex field and inflow, churn and bloom
  * motions. Below API 33, or if the shader is unavailable, it draws a static gradient instead.
  * License notices are in assets/licenses/prism-orb.txt.
  */
-class PrismOrbView @JvmOverloads constructor(
+class DadeuriView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : View(context, attrs) {
@@ -44,13 +44,21 @@ class PrismOrbView @JvmOverloads constructor(
             invalidate()
         }
 
-    /** Loudness in 0..1, read every frame. While null, the orb follows a simulated voice. */
+    /** While true (driving), motion stops and the visual holds a settled frame (PLEOS-SAFETY-008). */
+    var still = false
+        set(value) {
+            if (field == value) return
+            field = value
+            invalidate()
+        }
+
+    /** Loudness in 0..1, read every frame. While null, the visual follows a simulated voice. */
     var level: (() -> Float)? = null
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val renderer = if (Build.VERSION.SDK_INT >= 33) {
         runCatching { GlassRenderer() }
-            .onFailure { Log.e(TAG, "Prism orb shader unavailable", it) }
+            .onFailure { Log.e(TAG, "Dadeuri shader unavailable", it) }
             .getOrNull()
     } else null
     private var fallback: Shader? = null
@@ -168,7 +176,7 @@ class PrismOrbView @JvmOverloads constructor(
         if (side <= 0f) return
         val glass = renderer
         if (glass != null && canvas.isHardwareAccelerated) {
-            val animate = ValueAnimator.areAnimatorsEnabled()
+            val animate = !still && ValueAnimator.areAnimatorsEnabled()
             if (animate) advance(nextStep()) else settle()
             paint.shader = glass.update(side, animate)
             canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint)
@@ -240,7 +248,7 @@ private class Spring(value: Float, private val omega: Float = 5.5f) {
     }
 }
 
-private const val TAG = "PrismOrbView"
+private const val TAG = "DadeuriView"
 private const val EFFECT_OMEGA = 6f
 private const val FLOW_OMEGA = 7f
 private const val REACTIVITY = 1.25f
