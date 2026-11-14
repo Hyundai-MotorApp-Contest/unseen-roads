@@ -84,10 +84,10 @@ Vehicle SDK의 `getCurrentSeatOccupancy`(`CAR_SEATS`)와 `getCurrentBrakePedalSt
 
 | 항목 | 상태 | 근거 |
 | --- | --- | --- |
-| CarUxRestrictions 연동 | NOT_IMPLEMENTED | 코드 없음. 주행 중 기능 도입 전 BLOCKER |
+| CarUxRestrictions 연동 | NOT_IMPLEMENTED | 1차 목업은 구독하지 않는다. 주행은 시연 제어 토글 |
 | DO 선언 | 없음 | M06. 현재는 주행 중 앱 화면 사용 불가 |
-| `PrismOrbView` 주행 중 움직임 | NOT_APPLICABLE | 표시 중 매 프레임 셰이더 갱신. DO 선언 시 SAFETY-008 BLOCKER 후보 |
-| 오디오 | NOT_APPLICABLE | 소리 없음 |
+| `DadeuriView` 주행 중 움직임 | NOT_APPLICABLE | 표시 중 매 프레임 셰이더 갱신, 시연 주행 토글에서는 정지. DO 선언 시 SAFETY-008 BLOCKER 후보 |
+| 오디오 | NOT_APPLICABLE | 소리 출력 없음. 대사는 자막으로 표시 |
 
 ## 검증 수단
 
@@ -109,3 +109,9 @@ Virtual Console 카드 목록에는 차속 카드가 없다. 차속 기반 동�
 [L-05]: https://document.pleos.ai/docs/pleos-only/app-test-guide/virtual-console-guide
 [L-06]: https://document.pleos.ai/docs/pleos-only/app-test-guide/form-factor-test-guide
 [L-07]: https://source.android.com/docs/automotive/driver_distraction/guidelines?hl=ko
+
+### 2026-11-15 기획 기준
+
+최신 기획([README](../../README.md), [결정 D-013](../decisions.md))은 주행 중 화면을 줄이고 음성 흐름(이야기 듣기·말로 남기기·되묻기)만 유지하는 것을 계획한다. 위 기능별 판단 표의 "미확인" 항목과 [로드맵](implementation-roadmap.md) D6가 해결되기 전에는 구현에서 제한 상태를 기본값으로 둔다. 1차 기획 제출은 SDK 미개방으로 기획만 다루며, 이 판단의 실제 검증은 SDK 사용이 열린 뒤 수행한다. [음성 기획](../ourroad-voice.md).
+
+1차 목업은 실제 CarUxRestrictions를 구독하지 않는다. 주행 여부는 "시연 제어" 토글로 흉내 내며, 주행으로 바꾸면 자막·사연 정보를 숨기고 다드리의 움직임을 멈춘다. DO를 선언하지 않았으므로 실제 주행 규제가 켜지면 플랫폼이 앱 화면을 막는다.

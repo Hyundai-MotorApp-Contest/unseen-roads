@@ -6,13 +6,19 @@
 
 | 위치 | 역할 | 계층 |
 | --- | --- | --- |
-| `app/src/main/java/.../MainActivity.kt` | 단일 Activity. `Screen` enum으로 HOME·RECORDS·RADIO·RADIO_PAUSED·CAPTURE·REVIEW·DONE을 View 표시 전환. 상태는 필드 `screen` 하나 | Presentation |
-| `.../PrismOrbView.kt` | AGSL 셰이더 오브. IDLE·LISTENING·THINKING·SPEAKING 상태, API 33 미만은 정적 그라데이션 | Presentation |
-| `.../GlassPanel.kt` | 글래스 패널 효과 | Presentation |
-| `res/layout/activity_shell.xml` | `activity_main`, `prism_home`, `private_records` 포함 | Presentation |
-| 차량·SDK·오디오·저장·네트워크 | 없음 | - |
+2026-11-15 기준 1차 기획 목업이다(Jetpack Compose).
 
-모든 흐름은 예시 데이터로 움직이는 UI 목업이다. 차량 상태나 SDK 결과를 받는 경로가 없다.
+| 위치 | 역할 | 계층 |
+| --- | --- | --- |
+| `app/src/main/java/.../MainActivity.kt` | 단일 `ComponentActivity`. 프레임 시계로 `Tick`을 보내 대화 시간을 흘리고, Back은 대화를 멈춘다. 연결·시연 설정을 `rememberSaveable`로 복원 | Presentation |
+| `.../CarScreen.kt` | 차량 화면(다드리·상태 한 줄·대답 버튼)과 발표용 시연 제어 | Presentation |
+| `.../OurroadTheme.kt` | 색·서체(Pretendard)·자간 토큰 | Presentation |
+| `.../DadeuriView.kt` | AGSL 셰이더 다드리. IDLE·LISTENING·THINKING·SPEAKING, `still`이면 정지. API 33 미만은 정적 그라데이션 | Presentation |
+| `.../DadeuriFlow.kt` | 대화 상태기계(Android 타입 없음). 단위 테스트 대상 | Domain |
+| `.../DadeuriScript.kt` | 예시 대사·사연·발화 | Data(목업) |
+| 차량·SDK·오디오·저장·네트워크 | 없음. 시연 제어 값으로 흉내 냄 | - |
+
+차량 상태·음성·서버 판단을 받는 경로가 없다. SDK를 붙일 때 `DadeuriFlow`의 이벤트를 어댑터가 보내도록 바꾼다.
 
 ## 공식 정책이 구조에 요구하는 것
 
@@ -67,7 +73,7 @@ Presentation ──▶ Domain ◀── Data
 | 설정·로그인 | `NO_SETUP` | SAFETY-018 |
 | 장문·상세 화면 | `LIMIT_CONTENT`, `LIMIT_STRING_LENGTH` | SAFETY-018 |
 | 장식·상태 애니메이션 | 제한 상태 전체(정책 결정 필요) | SAFETY-008·009 |
-| 음성 낭독·음성 입력·공개 음성 확인 | 공식 허용 근거 미확인. 확인 전에는 제한 상태에서 시작하지 않음 | X-08, X-09, 프로젝트 규칙 |
+| 음성 낭독·음성 입력·공개 음성 확인 | 주행 중 음성 흐름은 기획상 계획(README, D-013). 공식 허용 근거 확인 전에는 제한 상태에서 시작하지 않음 | X-08, X-09, 로드맵 D6 |
 
 규칙:
 
@@ -121,3 +127,7 @@ Presentation ──▶ Domain ◀── Data
 2. 주행 규제 상태 관리와 게이트 계산을 먼저 만든다. 차량 기능보다 앞선다([implementation-roadmap.md](implementation-roadmap.md) 1단계).
 3. SDK 어댑터는 실제로 쓰는 SDK만 추가한다. 쓰지 않는 SDK 의존성과 퍼미션을 미리 넣지 않는다(SECURITY-017).
 4. 패키지 구조나 상태 관리 방식(ViewModel 등)을 정하면 [docs/decisions.md](../decisions.md)에 기록한다.
+
+## 2026-11-09 프로토타입 기록
+
+2026-11-09에 ParkedAccess(AAOS Car)·VoiceSession·AndroidVoice(기기 내 STT·TTS) 프로토타입을 만들었으나 2026-11-15에 1차 기획 목업으로 대체하며 제거했다. 조사 내용은 [음성 기획](../ourroad-voice.md)과 [작업 011](../../tasks/011-ourroad-voice.md)에 남아 있다.
