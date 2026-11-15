@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Pleos guide compliance checks for UNSEEN (macOS, Linux, Git Bash).
+# Pleos guide compliance checks for ourroad (macOS, Linux, Git Bash).
 # The checks live in check_compliance.py so Windows can run the same logic with
 #   py -3 scripts\pleos\check_compliance.py
 # Options: --static-only (skip Gradle), --strict (MINOR also fails), --list-manual

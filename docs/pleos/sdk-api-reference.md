@@ -63,7 +63,7 @@ ErrorCode와 권장 처리(SDK-011):
 | ERROR_EMPTY_RESULT | 결과 없음 | 빈 상태 UI |
 | ERROR_UNDEFINED | 미정의 | 로그·재시도 |
 
-UNSEEN과 관련해 API Reference에서 직접 연 API:
+ourroad과 관련해 API Reference에서 직접 연 API:
 
 | API | 시그니처(원문) | 퍼미션 |
 | --- | --- | --- |
@@ -115,7 +115,7 @@ TTS·STT ErrorType(SDK-017): AUDIO_ERROR, INVALID_REQUEST_ERROR, MIC_ERROR, NETW
 | 퍼미션 | `pleos.car.permission.FUSED_LOCATION`(protection level dangerous). 런타임 요청 흐름 필요 |
 | 주의 | `getLastKnownLocation()`은 새 위치를 계산하지 않는다. release 후 같은 인스턴스 호출 금지. Android ACCESS_*_LOCATION·백그라운드 위치 정책은 이 SDK가 보장하지 않는다 |
 
-UNSEEN 규칙과 함께 적용: 명시적 동의 전에는 위치 수집을 시작하지 않고, null·오래된 위치로 가짜 경로를 만들지 않는다(AGENTS.md, U-07).
+ourroad 규칙과 함께 적용: 명시적 동의 전에는 위치 수집을 시작하지 않고, null·오래된 위치로 가짜 경로를 만들지 않는다(AGENTS.md, U-07).
 
 ## NaviHelper SDK
 
@@ -129,7 +129,7 @@ UNSEEN 규칙과 함께 적용: 명시적 동의 전에는 위치 수집을 시�
 | 오류 | 초기화 실패는 `onFailed(throwable)`, 내비 오류는 `onError`: CAUSE_LOW_BATTERY, CAUSE_SEARCH_ROUTE_OVER_DISTANCE, CAUSE_SEARCH_ROUTE_TOO_SHORT_DISTANCE, CAUSE_SEARCH_ROUTE |
 | 주의 | 이벤트는 Navigation 앱 구현·상태에 따라 다르다. `requestRoute()` 성공은 탐색 완료가 아니다. 내비 탑재 확인 방법은 비공개(X-05) |
 
-UNSEEN 규칙: 우회 유도·경로 변경 기능을 넣지 않는다(AGENTS.md). 안내 예정 경로를 실제 통과 이력으로 쓰지 않는다. 내비 안내 중인지 판단하는 데 쓸 수 있는 이벤트(`onNavigationStatus`, `onTBTInfo` 등)의 실제 전달 여부는 EMU로 확인한다.
+ourroad 규칙: 우회 유도·경로 변경 기능을 넣지 않는다(AGENTS.md). 안내 예정 경로를 실제 통과 이력으로 쓰지 않는다. 내비 안내 중인지 판단하는 데 쓸 수 있는 이벤트(`onNavigationStatus`, `onTBTInfo` 등)의 실제 전달 여부는 EMU로 확인한다.
 
 ## Gleo Interface
 

@@ -47,7 +47,7 @@ Presentation ──▶ Domain ◀── Data
 | 계층 | 책임 | 하지 않는 것 |
 | --- | --- | --- |
 | Presentation | 화면 렌더링, 사용자 입력, 화면 상태 저장·복원, Portrait·Landscape 레이아웃. 주행 규제 상태를 구독해 기능을 숨기거나 비활성화 | SDK 직접 호출, 제한 여부 판단 로직 보유 |
-| Domain | UNSEEN 규칙(동의·시작 제안 조건·공개 확인·응답 전달 시점)과 기능 게이트 판정. 순수 Kotlin으로 단위 테스트 | Android·Pleos 클래스 참조 |
+| Domain | ourroad 규칙(동의·시작 제안 조건·공개 확인·응답 전달 시점)과 기능 게이트 판정. 순수 Kotlin으로 단위 테스트 | Android·Pleos 클래스 참조 |
 | Data | 이야기·응답·동의 상태·개인 기록의 저장소와 원격 API. 동의 전 수집 차단, 민감정보 암호화, 캐시·재시도 | 차량 신호 해석 |
 | Vehicle Integration | 차량·플랫폼 신호를 도메인 값으로 변환: 주행 규제, 위치, 탑승·브레이크 등 차량 상태, 내비 상태, 오디오 포커스, 수명주기·Suspend | UI 결정 |
 | SDK Adapter | SDK별 1개. 초기화·release, capability·isSupported, 리스너 등록·해제, 오류 변환, 스레드 정리. Fake로 대체 가능 | 정책 판단 |

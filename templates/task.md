@@ -12,7 +12,7 @@
 - 사용자가 확인한 요구:
 - 관찰 가능한 완료 조건:
 - intent.md의 P0/제품 원칙과 연결:
-- 관련 UNSEEN 검증 시나리오 ID (docs/verification-scenarios.md):
+- 관련 ourroad 검증 시나리오 ID (docs/verification-scenarios.md):
 
 ## 범위
 
