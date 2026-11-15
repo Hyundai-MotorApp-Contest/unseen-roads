@@ -85,7 +85,7 @@ Connect-W는 최대 앱 2개, App library가 운전석·조수석 모두에 있�
 
 Gleo는 GNB 다음 하위 레이어에 표시되어 다른 앱 화면을 일시적으로 가릴 수 있다. 대화 상태는 Sleep, Listening_Passive, Listening_Active, Thinking, Asking, Speaking, Standby로 구분되고 chrome(Lottie)으로 표시된다([UI-15]). 음성 대화 앱은 "듣는 중"과 "응답 중"을 명확히 구분해 보여 주는 이 원칙을 참고할 수 있다. Gleo의 브랜딩·chrome을 앱이 재사용해도 되는지는 문서에 없으므로 쓰지 않는다.
 
-## UNSEEN 적용 메모
+## ourroad 적용 메모
 
 | 항목 | 현재 | 판단 |
 | --- | --- | --- |

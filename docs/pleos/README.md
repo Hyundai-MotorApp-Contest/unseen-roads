@@ -1,6 +1,6 @@
 # Pleos 공식 가이드 하네스
 
-UNSEEN을 Pleos Connect 공식 가이드에 맞춰 개발하기 위한 요구사항·검증 체계다. 기준일 2026-11-06 KST에 [앱 기획·설계 가이드](https://document.pleos.ai/docs/pleos-only/vehicle-app-planning-guide/intro)와 [앱 개발·연동 가이드](https://document.pleos.ai/docs/pleos-only/vehicle-app-developer-guide/intro)의 하위 문서를 직접 열람해 만들었다.
+ourroad를 Pleos Connect 공식 가이드에 맞춰 개발하기 위한 요구사항·검증 체계다. 기준일 2026-11-06 KST에 [앱 기획·설계 가이드](https://document.pleos.ai/docs/pleos-only/vehicle-app-planning-guide/intro)와 [앱 개발·연동 가이드](https://document.pleos.ai/docs/pleos-only/vehicle-app-developer-guide/intro)의 하위 문서를 직접 열람해 만들었다.
 
 공식 문서를 요약한 자료가 아니라, 작업마다 **어떤 요구사항이 걸리는지 찾고 → 지키며 구현하고 → 검증해 기록하는** 데 쓴다.
 
@@ -11,7 +11,7 @@ UNSEEN을 Pleos Connect 공식 가이드에 맞춰 개발하기 위한 요구사
 | [sources.md](sources.md) | 출처·확인일·열람 상태, 접근하지 못한 문서(X), 문서 간 불일치(C) |
 | [requirements.md](requirements.md) | 170개 요구사항(ID·수준·조건·검증 기준·방식·출처) |
 | [compliance-matrix.md](compliance-matrix.md) | 요구사항별 현재 구현 상태와 검증 근거 |
-| [driving-safety.md](driving-safety.md) | 주행 규제·DO·UX 제한 플래그·지역 표, UNSEEN 기능별 판단 |
+| [driving-safety.md](driving-safety.md) | 주행 규제·DO·UX 제한 플래그·지역 표, ourroad 기능별 판단 |
 | [design-guidelines.md](design-guidelines.md) | 화면·window·텍스트·색·아이콘·디자인 리뷰 체크리스트 |
 | [development-guidelines.md](development-guidelines.md) | Manifest·오디오 포커스(Interaction Matrix)·Suspend·Back·IME·Gleo·ADB·금지 패턴 |
 | [sdk-api-reference.md](sdk-api-reference.md) | Pleos SDK·AAOS API의 역할·퍼미션·수명주기·오류, 검증 수준 표 |
@@ -60,7 +60,7 @@ UNSEEN을 Pleos Connect 공식 가이드에 맞춰 개발하기 위한 요구사
 | 항목 | 처리 |
 | --- | --- |
 | [docs/pleos.md](../pleos.md) | 2026-10-29·11-01 조사와 콘솔 SDK 표시 상태를 보존한다. 공식 가이드 요구사항의 기준은 이 디렉터리다 |
-| [docs/verification-scenarios.md](../verification-scenarios.md) | UNSEEN 제품 시나리오(U-xx)의 원본. testing-strategy.md가 요구사항과 연결만 한다 |
+| [docs/verification-scenarios.md](../verification-scenarios.md) | ourroad 제품 시나리오(U-xx)의 원본. testing-strategy.md가 요구사항과 연결만 한다 |
 | [templates/api-contract.md](../../templates/api-contract.md) | SDK 작업의 API 확인 기록. sdk-api-reference.md의 검증 수준 표와 함께 쓴다 |
 | `scripts/check_harness.py` | 문서 형식·링크 검사. 이 디렉터리의 파일도 필수 파일로 확인한다 |
 

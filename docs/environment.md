@@ -84,5 +84,5 @@ APK 경로는 `app/build/outputs/apk/debug/app-debug.apk`다. Device Manager에�
 ## 2026-11-15 · 공모전 제출 release APK
 
 - release 서명은 로컬 `keystore.properties`(gitignored)의 `storeFile`·`storePassword`·`keyAlias`·`keyPassword`를 읽는다. 파일이 없으면 서명되지 않은 release APK가 나온다. 키 파일과 비밀번호는 Git에 넣지 않는다.
-- 제출 APK는 `apk/UNSEEN_ourroad_release.apk`(`:app:assembleRelease` 결과 복사본)다.
+- 제출 APK는 `apk/handleandgratte_ourroad_release.apk`(`:app:assembleRelease` 결과 복사본)다.
 - 확인(macOS arm64, JBR 25.0.4): `:app:assembleRelease` PASS, `:app:testDebugUnitTest` 11개 PASS, `apksigner verify` PASS, Pleos Connect v2.1.0 에뮬레이터(2560×1440, 160dpi)에 설치·실행 PASS(크래시 로그 없음). Windows 빌드 NOT_RUN.

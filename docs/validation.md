@@ -1,4 +1,4 @@
-# UNSEEN 하네스 검증 결과
+# ourroad 하네스 검증 결과
 
 실행일: 2026-10-30 KST. 하네스 문서와 도구에 대한 검증이며 앱 동작 결과가 아니다.
 
@@ -13,7 +13,7 @@
 | Windows에서 검사 실행 | PASS | 2026-11-05 Windows 11 / Python 3.12.10, py -3 scripts/check_harness.py. 처음에는 core.autocrlf=true로 LF 규칙 밖 파일이 CRLF가 되어 FAIL. .gitattributes 기본값을 eol=lf로 바꾼 뒤 재체크아웃하여 PASS |
 | 각 팀원 Codex·Claude 규칙 로딩 | NOT_RUN | 팀원 세션을 실행하지 않음 |
 | Android build·SDK·Emulator·서버 | NOT_RUN | 앱·서버 프로젝트 미생성 |
-| UNSEEN 제품 검증 시나리오 | NOT_RUN | 계획만 작성, 실제 앱 없음 |
+| ourroad 제품 검증 시나리오 | NOT_RUN | 계획만 작성, 실제 앱 없음 |
 | CI·브랜치 보호·필수 승인 | NOT_RUN | 이번 작업에서 설정하지 않음 |
 
 ## 검사 범위와 한계

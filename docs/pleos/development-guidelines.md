@@ -103,7 +103,7 @@ CarAudioContext와 AttributeUsage 대응([D-02]):
 | SYSTEM_SOUND | SYSTEM_SOUND, ASSISTANCE_SONIFICATION, ASSISTANCE_ACCESSIBILITY |
 | EMERGENCY · SAFETY · VEHICLE_STATUS · ANNOUNCEMENT | 같은 이름의 usage. 시스템 컨텍스트는 Android 11 이상 |
 
-UNSEEN 낭독이 어떤 usage로 재생되는지는 Pleos TTS SDK 문서에 없다(X-08). 앱이 직접 재생하는 경우 usage 선택과 매트릭스상의 결과(예: MUSIC 중 NAVIGATION은 C, CALL 중 MUSIC은 R)를 결정 기록에 남긴다.
+ourroad 낭독이 어떤 usage로 재생되는지는 Pleos TTS SDK 문서에 없다(X-08). 앱이 직접 재생하는 경우 usage 선택과 매트릭스상의 결과(예: MUSIC 중 NAVIGATION은 C, CALL 중 MUSIC은 R)를 결정 기록에 남긴다.
 
 ### 필수 검증 체크리스트(AUDIO-009)
 
@@ -123,7 +123,7 @@ UNSEEN 낭독이 어떤 usage로 재생되는지는 Pleos TTS SDK 문서에 없�
 | Resume | 상태 복원 → 현재 시스템·사용자 조건 재평가 → 필요할 때만 포커스 재요청. 자동 재생은 기본 false(OEM·사용자 정책) |
 | 금지 | Suspend 중 포커스 유지, 백그라운드 재생, Resume 대비 포커스 선점 |
 
-진입을 감지하는 API는 문서에 없다(X-07). 감지 수단을 확인하기 전에는 Suspend 대응이 구현됐다고 쓰지 않는다. UNSEEN의 "다음 주행" 판정은 앱 재시작이나 Resume만으로 하지 않는다(AGENTS.md).
+진입을 감지하는 API는 문서에 없다(X-07). 감지 수단을 확인하기 전에는 Suspend 대응이 구현됐다고 쓰지 않는다. ourroad의 "다음 주행" 판정은 앱 재시작이나 Resume만으로 하지 않는다(AGENTS.md).
 
 ## 6. 음성 안내 선행 묵음
 
@@ -162,7 +162,7 @@ CCP Back이 Android 표준 Back 이벤트로 전달되는지 먼저 Emulator에�
 | Maps/Navigation | `APP_MAPS`, 단일 경로·CarAppFocusManager, 사용자 동의 없는 경로 전환 금지, 주행 중 조작 금지 항목, 최소 권한·위치 암호화 | NAV-001~006 |
 | 그 외 | 선언 방법 미확인(X-13). 카테고리-기능 일치 | CATEGORY-001~004 |
 
-UNSEEN은 카테고리를 결정하기 전이다. Music/Audio를 택하면 MBS·MediaSession·하위 카테고리(라디오·팟캐스트 등)와 스티어링 휠 키 지원이 필수 범위로 들어오며, 대화·공개 확인 같은 기능이 "오디오 재생이 주 기능" 기준과 맞는지 심사 위험을 함께 검토한다.
+ourroad는 카테고리를 결정하기 전이다. Music/Audio를 택하면 MBS·MediaSession·하위 카테고리(라디오·팟캐스트 등)와 스티어링 휠 키 지원이 필수 범위로 들어오며, 대화·공개 확인 같은 기능이 "오디오 재생이 주 기능" 기준과 맞는지 심사 위험을 함께 검토한다.
 
 ## 10. Gleo Interface
 
