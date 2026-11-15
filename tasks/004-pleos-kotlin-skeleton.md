@@ -15,7 +15,7 @@
 ## 범위
 
 - 단일 `:app` 모듈, AAOS Manifest, Kotlin Activity, XML 시작 화면, Gradle Wrapper, 실행 문서.
-- 이름은 현재 제품 표기인 UNSEEN을 사용한다. `io.github.hyundaimotorappcontest.unseen`은 개발용 applicationId다. XML은 뼈대의 시작 화면에 사용했다.
+- 이름은 당시 제품 표기를 사용했고, 이후 앱 이름을 ourroad로 바꿨다. `io.github.hyundaimotorappcontest.unseen`은 개발용 applicationId다. XML은 뼈대의 시작 화면에 사용했다.
 - Pleos SDK·내비게이션 호출, 실제 차량 신호, 위치 수집·음성·게시, 모바일 앱, 백엔드는 후속 범위다.
 
 ## 근거

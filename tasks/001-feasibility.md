@@ -1,4 +1,4 @@
-# 001 · Pleos에서 UNSEEN이 가능한지 확인
+# 001 · Pleos에서 ourroad가 가능한지 확인
 
 - 상태: TODO
 - 담당자: 미정

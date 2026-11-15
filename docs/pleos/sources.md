@@ -144,7 +144,7 @@ P-03의 URL 철자(`restiction`)는 원문 그대로다.
 | X-09 | STT의 Android 마이크 권한(`RECORD_AUDIO`) 필요 여부 | UNVERIFIED | S-S는 `STT_SERVICE`만 안내. MIC_ERROR는 "센서 개인정보 보호 설정"을 언급 |
 | X-10 | 링크된 AAOS·Android 문서(VehiclePropertyIds, CarPropertyManager, CarAppFocusManager, Handle input method visibility, AAOS 미디어 앱, 자동차 오디오 구성, Adaptive Icon) | NOT_READ | 해당 API를 쓰는 작업에서 열람 |
 | X-11 | 앱 리뷰 가이드라인의 나머지 페이지, 앱 등록 가이드(태깅·업데이트) | NOT_READ | 배포 준비 단계에서 열람 |
-| X-12 | 내비 위 오버레이(다른 앱 위 표시) 허용 여부 | UNVERIFIED | 두 가이드 어디에도 없음. UNSEEN의 내비 위 오브 목표와 직결 |
+| X-12 | 내비 위 오버레이(다른 앱 위 표시) 허용 여부 | UNVERIFIED | 두 가이드 어디에도 없음. ourroad의 내비 위 오브 목표와 직결 |
 | X-13 | Maps·Music/Audio 외 카테고리의 매니페스트 선언 방법 | UNVERIFIED | D-06·D-07은 각자 카테고리만 안내 |
 | X-14 | 지역별 규제 표에서 한국의 분류 | UNVERIFIED | P-03은 북미·유럽·그외만 표시. D-10은 지역 코드 KOR을 정의 |
 | X-15 | 한국어 텍스트 길이 기준 | UNVERIFIED | UI-01은 영어·일본어 기준만 제시 |

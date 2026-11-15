@@ -74,7 +74,7 @@ SDK는 JVM에서 돌지 않으므로 [architecture.md](architecture.md)의 어�
 
 Virtual Console에는 차속 카드가 없다. 기어 P·D 전환과 규제 명령을 함께 쓰고, 차속 기반 판정은 실차에서 다시 확인한다.
 
-## UNSEEN 시나리오 연결
+## ourroad 시나리오 연결
 
 [docs/verification-scenarios.md](../verification-scenarios.md)의 시나리오와 요구사항을 연결한다.
 

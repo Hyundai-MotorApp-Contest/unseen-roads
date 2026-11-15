@@ -1,6 +1,6 @@
 # ourroad · 같은 길, 다른 시간
 
-> 현대자동차그룹 차량용 앱 개발 공모전 출품작 · 팀 UNSEEN
+> 현대자동차그룹 차량용 앱 개발 공모전 출품작 · 팀 핸들과그랬대 (handleandgratte)
 
 ## 앱 이름 및 한 줄 소개
 
@@ -36,7 +36,7 @@
 2. 저장소 루트에서 APK를 설치합니다.
 
    ```bash
-   adb install apk/UNSEEN_ourroad_release.apk
+   adb install apk/handleandgratte_ourroad_release.apk
    ```
 
    같은 패키지의 다른 서명 빌드(예: 디버그 빌드)가 이미 설치되어 있으면 먼저 지웁니다.
@@ -91,7 +91,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ## APK 파일 위치
 
-[`apk/UNSEEN_ourroad_release.apk`](apk/UNSEEN_ourroad_release.apk)
+[`apk/handleandgratte_ourroad_release.apk`](apk/handleandgratte_ourroad_release.apk)
 
 | 항목 | 값 |
 | --- | --- |

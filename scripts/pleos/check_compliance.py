@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check UNSEEN against the Pleos guide harness. Python 3.9+, standard library only.
+"""Check ourroad against the Pleos guide harness. Python 3.9+, standard library only.
 
 Only statically verifiable items are judged here. Items that need the Pleos
 Emulator, a real vehicle, a human review or Pleos/App Market confirmation are
