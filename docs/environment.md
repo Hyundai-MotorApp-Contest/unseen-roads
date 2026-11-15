@@ -80,3 +80,9 @@ APK 경로는 `app/build/outputs/apk/debug/app-debug.apk`다. Device Manager에�
 - Compose 의존성(BOM 2026.09.00, activity-compose 1.12.0)과 Compose 컴파일러 플러그인 2.2.10을 추가했다. 플러그인 버전은 AGP 9.4.1 내장 Kotlin과 같아야 한다. 루트 `build.gradle.kts`에서 버전을 선언(`apply false`)한다.
 - 서체 Pretendard(OFL, `app/src/main/assets/licenses/pretendard.txt`)를 `res/font`에 포함했다.
 - Manifest에 권한이 없다. 차량·음성·서버는 시연 제어와 예시 대사로 흉내 낸다.
+
+## 2026-11-15 · 공모전 제출 release APK
+
+- release 서명은 로컬 `keystore.properties`(gitignored)의 `storeFile`·`storePassword`·`keyAlias`·`keyPassword`를 읽는다. 파일이 없으면 서명되지 않은 release APK가 나온다. 키 파일과 비밀번호는 Git에 넣지 않는다.
+- 제출 APK는 `apk/UNSEEN_ourroad_release.apk`(`:app:assembleRelease` 결과 복사본)다.
+- 확인(macOS arm64, JBR 25.0.4): `:app:assembleRelease` PASS, `:app:testDebugUnitTest` 11개 PASS, `apksigner verify` PASS, Pleos Connect v2.1.0 에뮬레이터(2560×1440, 160dpi)에 설치·실행 PASS(크래시 로그 없음). Windows 빌드 NOT_RUN.
